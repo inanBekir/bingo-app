@@ -62,7 +62,7 @@ export const data = [
     {
         id: 12,
         item:'Storm the Front',
-        selected:false
+        selected:true
     },
     {
         id: 13,
@@ -124,4 +124,26 @@ export const data = [
         item:'Storm the Front',
         selected:false
     },
+  ];
+
+  export const bingoPossibilityRowData = 
+  [
+    {checkArray:[0,1,2,3,4], isBingo:false},
+    {checkArray:[5,6,7,8,9], isBingo:false},
+    {checkArray:[10,11,12,13,14], isBingo:false},
+    {checkArray:[15,16,17,18,19], isBingo:false},
+    {checkArray:[20,21,22,23,24], isBingo:false}
+  ];
+  export const bingoPossibilityColData = 
+  [
+    {checkArray:[0,5,10,15,20], isBingo:false},
+    {checkArray:[1,6,11,16,21], isBingo:false},
+    {checkArray:[2,7,12,17,22], isBingo:false},
+    {checkArray:[3,8,13,18,23], isBingo:false},
+    {checkArray:[4,9,14,19,24], isBingo:false}
+  ];
+  export const bingoPossibilityDiagData = 
+  [
+    {checkArray:[0,6,12,18,24], isBingo:false},
+    {checkArray:[4,8,12,16,20], isBingo:false}
   ];

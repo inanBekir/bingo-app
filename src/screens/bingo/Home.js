@@ -1,48 +1,75 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../../styles/bingoStyles/Home.scss'
-import {data} from '../Model/BingoModel';
+import {data, bingoPossibilityRowData, bingoPossibilityColData} from '../Model/BingoModel';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import {useStyles} from '../../styles/bingoStyles/homeStyles';
+var _ = require('underscore');
 
 function Home() {
   let colBingolist = [];
   const [modelData, setModelData] = useState(data);
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [notes, setNotes] = useState([]);
+  const [bingoPossibilityRow, setBingoPossibilityRow] = useState(bingoPossibilityRowData);
+  const [bingoPossibilityCol, setBingoPossibilityCol] = useState(bingoPossibilityColData);
+
+  useEffect(() => {
+    if (notes.indexOf(12) === -1) {
+      setNotes([...notes, 12]);
+    }
+    checkRowBingo();
+    checkColBingo();
+
+  }, [notes]);
+
+  const checkColBingo = () => {
+    notes.sort(function(a, b){return a-b});
+      for (let i = 0; i < bingoPossibilityCol.length; i++) {
+        const element = bingoPossibilityCol[i];
+        if (_.intersection(notes, element.checkArray).length === element.checkArray.length && element.isBingo === false) {
+          element.isBingo = true;
+          handleOpen();
+        }
+      }
+  }
 
   const checkRowBingo = () => {
-      let isBingo = [];
+    notes.sort(function(a, b){return a-b});
+      for (let i = 0; i < bingoPossibilityRow.length; i++) {
+        const element = bingoPossibilityRow[i];
+        if (_.intersection(notes, element.checkArray).length === element.checkArray.length && element.isBingo === false) {
+          element.isBingo = true;
+          handleOpen();
+        }
+      }
+  }
+  const addData = (data) => {
       for (let data of modelData) {
         if (data.selected) {
           colBingolist.push(data.id)
         }
       }
-      for (var i = 0; i < colBingolist.length; i++) {
-        isBingo.push(colBingolist[i])
-      }
-      if (isBingo.length >= 5) {
-        if (isBingo.length!==Math.max(...isBingo)-Math.min(...isBingo)+1) {
-          console.log('no bingo')
-        }else {
-          handleOpen();
-        }
+      if (notes.indexOf(data.id) === -1) {
+        setNotes([...notes, data.id]);
       }
   }
 
 
   const choose = (id) => {
     let render = [...modelData];
-    
+    let d;
     for (let data of render) {
         if (data.id === id) {
           data.selected = data.selected == null ? true : !data.selected;
+          d = data;
         }
     }
 
     setModelData(render)
-    checkRowBingo();
+    addData(d);
   }
 
   const handleOpen = () => {
