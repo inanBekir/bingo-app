@@ -1,127 +1,270 @@
+const topics = 
+[
+    {
+        index:0,
+        topicTitle:'Lets do it!',
+    }, 
+    {
+        index:1,
+        topicTitle:'Cover Me!',
+    }, 
+    {
+        index:2,
+        topicTitle:'You Take the Point',
+    }, 
+    {
+        index:3,
+        topicTitle:'Hold This Position!',
+    }, 
+    {
+        index:4,
+        topicTitle:'Follow Me!',
+    }, 
+    {
+        index:5,
+        topicTitle:'Regroup, Team!',
+    }, 
+    {
+        index:6,
+        topicTitle:'Taking Fire, Need Assistance!',
+    }, 
+    {
+        index:7,
+        topicTitle: 'GO!',
+    }, 
+    {
+        index:8,
+        topicTitle: 'Team, Fall Back!',
+    }, 
+    {
+        index:9,
+        topicTitle: 'Hold This Position!',
+    }, 
+    {
+        index:10,
+        topicTitle: 'Stick Together, Team',
+    }, 
+    {
+        index:11,
+        topicTitle: 'Storm the Front',
+    }, 
+    {
+        index:12,
+        topicTitle: 'Get in Position',
+    }, 
+    {
+        index:13,
+        topicTitle: 'Fire in the hole',
+    }, 
+    {
+        index:14,
+        topicTitle: 'Cheer',
+    }, 
+    {
+        index:15,
+        topicTitle: 'Enemy Down',
+    }, 
+    {
+        index:16,
+        topicTitle: 'Reporting In',
+    }, 
+    {
+        index:17,
+        topicTitle:  'Negative',
+    }, 
+    {
+        index:18,
+        topicTitle: 'Im in Position',
+    }, 
+    {
+        index:19,
+        topicTitle: 'Need Backup',
+    }, 
+    {
+        index:20,
+        topicTitle: 'Enemy Spotted',
+    },
+    {
+        index:21,
+        topicTitle: 'Affirmative, Roger',
+    },
+    {
+        index:22,
+        topicTitle: 'Thanks',
+    },
+    {
+        index:23,
+        topicTitle: 'Compliment, Nice'
+    },
+    {
+        index:24,
+        topicTitle: 'Sector Clear',
+    },
+]
+function shuffleArray(array) {
+    let curId = array.length;
+    // There remain elements to shuffle
+    while (0 !== curId) {
+      // Pick a remaining element
+      let randId = Math.floor(Math.random() * curId);
+      curId -= 1;
+      // Swap it with the current element.
+      let tmp = array[curId];
+      array[curId] = array[randId];
+      array[randId] = tmp;
+    }
+    return array;
+}
+shuffleArray(topics)
 export const data = [
     {
         id: 0,
-        item:'Lets do it!',
-        selected:false
+        index: topics[0].index,
+        item: topics[0].topicTitle,
+        selected: false
     },
     {
         id: 1,
-        item:'Cover Me!',
+        index: topics[1].index,
+        item: topics[1].topicTitle,
         selected:false
     },
     {
         id: 2,
-        item:'You Take the Point',
+        index: topics[2].index,
+        item: topics[2].topicTitle,
         selected:false
     },
     {
         id: 3,
-        item:'Hold This Position!',
+        index: topics[3].index,
+        item: topics[3].topicTitle,
         selected:false
     },
     {
         id: 4,
-        item:'Follow Me!',
+        index: topics[4].index,
+        item: topics[4].topicTitle,
         selected:false
     },
     {
         id: 5,
-        item:'Regroup, Team!',
+        index: topics[5].index,
+        item: topics[5].topicTitle,
         selected:false
     },
     {
         id: 6,
-        item:'Taking Fire, Need Assistance!',
+        index: topics[6].index,
+        item: topics[6].topicTitle,
         selected:false
     },
     {
         id: 7,
-        item:'GO!',
+        index: topics[7].index,
+        item: topics[7].topicTitle,
         selected:false
     },
     {
         id: 8,
-        item:'Team, Fall Back!',
+        index: topics[8].index,
+        item: topics[8].topicTitle,
         selected:false
     },
     {
         id: 9,
-        item:'Hold This Position!',
+        index: topics[9].index,
+        item: topics[9].topicTitle,
         selected:false
     },
     {
         id: 10,
-        item:'Stick Together, Team',
+        index: topics[10].index,
+        item: topics[10].topicTitle,
         selected:false
     },
     {
         id: 11,
-        item:'Get in Position',
+        index: topics[11].index,
+        item: topics[11].topicTitle,
         selected:false
     },
     {
         id: 12,
-        item:'Storm the Front',
+        index: topics[12].index,
+        item: topics[12].topicTitle,
         selected:true
     },
     {
         id: 13,
-        item:'Cheer',
+        index: topics[13].index,
+        item: topics[13].topicTitle,
         selected:false
     },
     {
         id: 14,
-        item:'Enemy Down',
+        index: topics[14].index,
+        item: topics[14].topicTitle,
         selected:false
     },
     {
         id: 15,
-        item:'Reporting In',
+        index: topics[15].index,
+        item: topics[15].topicTitle,
         selected:false
     },
     {
         id: 16,
-        item:'Negative',
+        index: topics[16].index,
+        item: topics[16].topicTitle,
         selected:false
     },
     {
         id: 17,
-        item:'Im in Position',
+        index: topics[17].index,
+        item: topics[17].topicTitle,
         selected:false
     },
     {
         id: 18,
-        item:'Sector Clear',
+        index: topics[18].index,
+        item: topics[18].topicTitle,
         selected:false
     },
     {
         id: 19,
-        item:'Need Backup',
+        index: topics[19].index,
+        item: topics[19].topicTitle,
         selected:false
     },
     {
         id: 20,
-        item:'Enemy Spotted',
+        index: topics[20].index,
+        item: topics[20].topicTitle,
         selected:false
     },
     {
         id: 21,
-        item:'Affirmative, Roger',
+        index: topics[21].index,
+        item: topics[21].topicTitle,
         selected:false
     },
     {
         id: 22,
-        item:'Thanks',
+        index: topics[22].index,
+        item: topics[22].topicTitle,
         selected:false
     },
     {
         id: 23,
-        item:'Compliment, Nice',
+        index: topics[23].index,
+        item: topics[23].topicTitle,
         selected:false
     },
     {
         id: 24,
-        item:'Storm the Front',
+        index: topics[24].index,
+        item: topics[24].topicTitle,
         selected:false
     },
   ];

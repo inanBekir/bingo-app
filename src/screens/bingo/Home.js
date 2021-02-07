@@ -1,6 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import '../../styles/bingoStyles/Home.scss'
-import {data, bingoPossibilityRowData, bingoPossibilityColData} from '../Model/BingoModel';
+import {
+  data, 
+  bingoPossibilityRowData, 
+  bingoPossibilityColData, 
+  bingoPossibilityDiagData 
+} from '../Model/BingoModel';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -15,6 +20,7 @@ function Home() {
   const [notes, setNotes] = useState([]);
   const [bingoPossibilityRow, setBingoPossibilityRow] = useState(bingoPossibilityRowData);
   const [bingoPossibilityCol, setBingoPossibilityCol] = useState(bingoPossibilityColData);
+  const [bingoPossibilityDiag, setBingoPossibilityDiag] = useState(bingoPossibilityDiagData);
 
   useEffect(() => {
     if (notes.indexOf(12) === -1) {
@@ -22,7 +28,7 @@ function Home() {
     }
     checkRowBingo();
     checkColBingo();
-
+    checkDiagBingo();
   }, [notes]);
 
   const checkColBingo = () => {
@@ -46,6 +52,18 @@ function Home() {
         }
       }
   }
+
+  const checkDiagBingo = () => {
+    notes.sort(function(a, b){return a-b});
+      for (let i = 0; i < bingoPossibilityDiag.length; i++) {
+        const element = bingoPossibilityDiag[i];
+        if (_.intersection(notes, element.checkArray).length === element.checkArray.length && element.isBingo === false) {
+          element.isBingo = true;
+          handleOpen();
+        }
+      }
+  }
+
   const addData = (data) => {
       for (let data of modelData) {
         if (data.selected) {
@@ -84,12 +102,12 @@ function Home() {
     <div className="container">
         {modelData.map(data => (
           data.id === 12 ? 
-          <div onClick={() => choose(data.id)} className='freeSlot'>
+          <div key={data.id} onClick={() => choose(data.id)} className='freeSlot'>
             <img src="https://www.playbingoaustralia.com/wp-content/uploads/2015/02/Bingo-Night.png" alt="freeImage" width="100%"></img>
           </div> : 
-          <div onClick={() => choose(data.id)} className={data.selected ? 'itemSelected' : 'item'}>
+          <div key={data.id} onClick={() => choose(data.id)} className={data.selected ? 'itemSelected' : 'item'}>
             <div className="number">
-              <p>{data.id}</p>
+              <p>{data.index}</p>
             </div>
             <div className="text">
               <p>{data.item}</p>
