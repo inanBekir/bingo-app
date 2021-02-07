@@ -27,6 +27,7 @@ function Home() {
     checkRowBingo();
     checkColBingo();
     checkDiagBingo();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [notes]);
 
   const checkColBingo = () => {
